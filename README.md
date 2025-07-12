@@ -4,11 +4,13 @@ This time around the goal of the project is to:
 
 - [x] setup basic FE with Vite + React + Typescript + TailwindCSS + ShadCN + Lucide
 - [x] setup basic BE with Python + FastAPI + uvicorn
-- [x] add .env with API keys
-- [ ] FE make an UI ask questions to an LLM
+- [x] add .env for API keys
+- [x] FE make an UI ask questions to an LLM
+- [x] add .env for API url
+- [x] connect FE to BE with fetch
 - [ ] FE make a UI for a password
-- [ ] add an endpoint for the user question
 - [ ] password protect the endpoint
+- [ ] BE add API call to LLM
 - [ ] add basic rate limiting to endpoint
 - [ ] setup separate docker for FE and BE
 - [ ] setup a reverse proxy with nginx
@@ -20,3 +22,5 @@ Notes:
 
 - missed imports on add tailwind to vite.config, fast was skipping to shadCN install guide, already covers tailwindcss
 - first push to git miss because forgot to commit
+- BE response needs to be JSON, not string
+- struggled with writing FE fetch, some struggle with handlekeydown, setting functions in components
