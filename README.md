@@ -3,8 +3,8 @@
 This time around the goal of the project is to:
 
 - [x] setup basic FE with Vite + React + Typescript + TailwindCSS + ShadCN + Lucide
-- [ ] setup basic BE with Python + FastAPI
-- [ ] add .env with API keys
+- [x] setup basic BE with Python + FastAPI + uvicorn
+- [x] add .env with API keys
 - [ ] FE make an UI ask questions to an LLM
 - [ ] FE make a UI for a password
 - [ ] add an endpoint for the user question

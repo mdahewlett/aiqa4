@@ -1,0 +1,6 @@
+aiqa4/**
+
+.env
+*.env
+
+__pycache__/
