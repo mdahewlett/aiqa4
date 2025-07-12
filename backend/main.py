@@ -10,11 +10,12 @@ from slowapi.errors import RateLimitExceeded
 
 load_dotenv()
 PASSWORD = os.environ["PASSWORD"]
+ALLOWED_ORIGINS = os.environ["ALLOWED_ORIGINS"]
 
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["http://localhost:5173"],
+    allow_origins = [ALLOWED_ORIGINS],
     allow_methods = ["POST"],
     allow_headers = ["*"]
 )

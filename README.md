@@ -12,7 +12,8 @@ This time around the goal of the project is to:
 - [x] password protect the endpoint
 - [x] BE add API call to LLM
 - [x] add basic rate limiting to endpoint
-- [ ] setup separate docker for FE and BE
+- [x] setup separate docker for FE and BE
+- [x] setup docker-compose
 - [ ] setup a reverse proxy with nginx
 - [ ] setup VPS and domain pointing
 - [ ] deploy to VPS without HTTPS
@@ -27,6 +28,7 @@ Notes:
 - forgot status handling on FE, BE setup
 - format of OpenAI forgotten
 - learned environ[] vs getenv()
+- docker-compose.yml just for testing that dockerfiles would work in prod, not to use in dev
 
 Extras:
 
