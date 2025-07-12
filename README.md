@@ -10,7 +10,7 @@ This time around the goal of the project is to:
 - [x] connect FE to BE with fetch
 - [x] FE make a UI for a password
 - [x] password protect the endpoint
-- [ ] BE add API call to LLM
+- [x] BE add API call to LLM
 - [ ] add basic rate limiting to endpoint
 - [ ] setup separate docker for FE and BE
 - [ ] setup a reverse proxy with nginx
@@ -25,3 +25,10 @@ Notes:
 - BE response needs to be JSON, not string
 - struggled with writing FE fetch, some struggle with handlekeydown, setting functions in components
 - forgot status handling on FE, BE setup
+- format of OpenAI forgotten
+- learned environ[] vs getenv()
+
+Extras:
+
+- added healthcheck get endpoint
+- with OpenAI() automatically will use api key so long as I loaddotenv()
