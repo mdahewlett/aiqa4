@@ -26,9 +26,18 @@ function App() {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/chat`, {
         method: "POST",
-        headers: {"Content-type": "application/json"},
+        headers: {
+          "Content-type": "application/json",
+          "x-api-key": password
+        },
         body: JSON.stringify({ query })
       })
+
+      if (res.status === 401) {
+        setResponse("You have provided an invalid password. Refresh the page and try again.")
+        setQuery("")
+        return
+      }
 
       const data = await res.json()
       setResponse(data.response)
