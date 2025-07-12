@@ -39,6 +39,12 @@ function App() {
         return
       }
 
+      if (res.status == 429) {
+        setResponse("You have reached your query limit. Try again in a minute.")
+        setQuery("")
+        return
+      }
+
       const data = await res.json()
       setResponse(data.response)
     } catch (err) {

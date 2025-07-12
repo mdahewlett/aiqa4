@@ -11,7 +11,7 @@ This time around the goal of the project is to:
 - [x] FE make a UI for a password
 - [x] password protect the endpoint
 - [x] BE add API call to LLM
-- [ ] add basic rate limiting to endpoint
+- [x] add basic rate limiting to endpoint
 - [ ] setup separate docker for FE and BE
 - [ ] setup a reverse proxy with nginx
 - [ ] setup VPS and domain pointing

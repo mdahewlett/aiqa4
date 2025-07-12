@@ -1,9 +1,12 @@
 import os
 from dotenv import load_dotenv
-from fastapi import FastAPI, Header, HTTPException
+from fastapi import FastAPI, Header, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from openai import OpenAI
+from slowapi import Limiter, _rate_limit_exceeded_handler
+from slowapi.util import get_remote_address
+from slowapi.errors import RateLimitExceeded
 
 load_dotenv()
 PASSWORD = os.environ["PASSWORD"]
@@ -16,6 +19,10 @@ app.add_middleware(
     allow_headers = ["*"]
 )
 
+limiter = Limiter(key_func=get_remote_address)
+app.state.limiter = limiter
+app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler) # type: ignore
+
 client = OpenAI()
 class ChatRequest(BaseModel):
     query: str
@@ -25,7 +32,8 @@ def healthcheck():
     return "Backend is running properly"
 
 @app.post("/chat")
-def chat(request: ChatRequest, x_api_key: str = Header(None)):
+@limiter.limit("5/minute")
+def chat(request: Request, body: ChatRequest, x_api_key: str = Header(None)):
     if x_api_key != PASSWORD:
         raise HTTPException(status_code=401, detail="Unauthorized")
     
@@ -34,7 +42,7 @@ def chat(request: ChatRequest, x_api_key: str = Header(None)):
         messages=[
             {
                 "role": "user",
-                "content": request.query
+                "content": body.query
             }
         ]
     )
