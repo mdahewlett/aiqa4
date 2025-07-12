@@ -6,6 +6,7 @@ import { Textarea } from "./components/ui/textarea"
 import ReactMarkdown from "react-markdown"
 import { LoremIpsum } from "lorem-ipsum"
 import { useState } from "react"
+import { Input } from "./components/ui/input"
 
 const lorem = new LoremIpsum()
 const dummyText = lorem.generateParagraphs(4)
@@ -13,6 +14,8 @@ const dummyText = lorem.generateParagraphs(4)
 function App() {
   const [query, setQuery] = useState("")
   const [response, setResponse] = useState(dummyText)
+  const [password, setPassword] = useState("")
+  const [hasPassword, setHasPassword] = useState(false)
 
   const handleClick = async () => {
     if (!query.trim()) {
@@ -37,11 +40,31 @@ function App() {
     setQuery("")
   }
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleQueryKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey){
       e.preventDefault()
       handleClick()
     }
+  }
+
+  const handlePasswordKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      setHasPassword(true)
+    }
+  }
+
+  if (!hasPassword) {
+    return (
+      <div className="flex w-1/4 mx-auto items-center h-screen">
+        <Input 
+          placeholder="Please enter the password" 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)}
+          onKeyDown={handlePasswordKeyDown}
+        />
+      </div>
+    )
   }
 
   return (
@@ -71,7 +94,7 @@ function App() {
               placeholder="Ask anything"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
+              onKeyDown={handleQueryKeyDown}
             />
             <Button size={"icon"} variant={"secondary"} onClick={handleClick}>
               <Send/>
