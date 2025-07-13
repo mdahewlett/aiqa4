@@ -20,4 +20,4 @@ WORKDIR /app
 
 COPY --from=builder /app/dist ./dist
 
-CMD [ "serve", "-s", "dist", "-l", "0.0.0.0:5173" ]
+CMD [ "serve", "-s", "dist", "-l", "tcp://0.0.0.0:5173" ]
