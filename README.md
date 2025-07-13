@@ -17,7 +17,7 @@ This time around the goal of the project is to:
 - [x] setup a reverse proxy with nginx
 - [x] setup VPS
 - [x] deploy to VPS
-- [ ] connect VPS to domain name
+- [x] connect VPS to domain name
 - [ ] add HTTPS with Let's Encrypt
 
 Notes:
@@ -34,8 +34,10 @@ Notes:
 - host server RAM too small, had to make swapfile so build could run
 - made user, set up ssh to access github, clone repo
 - had to make prod docker compose to proper address for frontend to contact, point FE to server address
+- nginx redirect www to @ since www call to @ was hitting CORS
 
 Extras:
 
 - added healthcheck get endpoint
 - with OpenAI() automatically will use api key so long as I loaddotenv()
+- added restart: always to docker compose so when VPS reboots, docker-compose will run
