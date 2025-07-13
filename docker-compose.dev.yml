@@ -4,19 +4,22 @@ services:
       context: ./backend
     env_file:
       - ./backend/.env
+    ports:
+      - "8000:8000"
     networks:
       - app-network
-
   frontend:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: http://nginx
+        VITE_API_URL: http://localhost
+    ports:
+      - "5173:5173"
     depends_on:
       - backend
     networks:
       - app-network
-
+  
   nginx:
     image: nginx:latest
     volumes:

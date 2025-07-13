@@ -15,7 +15,9 @@ This time around the goal of the project is to:
 - [x] setup separate docker for FE and BE
 - [x] setup docker-compose
 - [x] setup a reverse proxy with nginx
-- [ ] setup VPS and domain pointing
+- [x] setup VPS
+- [ ] send code to VPS
+- [ ] connect VPS to domain name
 - [ ] deploy to VPS without HTTPS
 - [ ] add HTTPS with Let's Encrypt
 
@@ -30,6 +32,9 @@ Notes:
 - learned environ[] vs getenv()
 - docker-compose.yml just for testing that dockerfiles would work in prod, not to use in dev
 - nginx right now seems just to test scenario where FE and BE on one server
+- host server RAM too small, had to make swapfile so build could run
+- made user, set up ssh to access github, clone repo
+- had to make prod docker compose to proper address for frontend to contact
 
 Extras:
 
