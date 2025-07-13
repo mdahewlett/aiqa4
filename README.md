@@ -14,7 +14,7 @@ This time around the goal of the project is to:
 - [x] add basic rate limiting to endpoint
 - [x] setup separate docker for FE and BE
 - [x] setup docker-compose
-- [ ] setup a reverse proxy with nginx
+- [x] setup a reverse proxy with nginx
 - [ ] setup VPS and domain pointing
 - [ ] deploy to VPS without HTTPS
 - [ ] add HTTPS with Let's Encrypt
@@ -29,6 +29,7 @@ Notes:
 - format of OpenAI forgotten
 - learned environ[] vs getenv()
 - docker-compose.yml just for testing that dockerfiles would work in prod, not to use in dev
+- nginx right now seems just to test scenario where FE and BE on one server
 
 Extras:
 
