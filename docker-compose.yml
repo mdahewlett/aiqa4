@@ -11,7 +11,9 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: http://nginx
+        VITE_API_URL: ${VITE_API_URL}
+    env_file:
+      - ./frontend/.env.prod.public
     depends_on:
       - backend
     networks:
