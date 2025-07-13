@@ -16,9 +16,8 @@ This time around the goal of the project is to:
 - [x] setup docker-compose
 - [x] setup a reverse proxy with nginx
 - [x] setup VPS
-- [ ] send code to VPS
+- [x] deploy to VPS
 - [ ] connect VPS to domain name
-- [ ] deploy to VPS without HTTPS
 - [ ] add HTTPS with Let's Encrypt
 
 Notes:
@@ -34,7 +33,7 @@ Notes:
 - nginx right now seems just to test scenario where FE and BE on one server
 - host server RAM too small, had to make swapfile so build could run
 - made user, set up ssh to access github, clone repo
-- had to make prod docker compose to proper address for frontend to contact
+- had to make prod docker compose to proper address for frontend to contact, point FE to server address
 
 Extras:
 

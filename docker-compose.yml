@@ -11,7 +11,7 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: http://143.110.155.41
+        VITE_API_URL: http://buld.site
     depends_on:
       - backend
     networks:
