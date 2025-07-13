@@ -11,9 +11,7 @@ services:
     build:
       context: ./frontend
       args:
-        VITE_API_URL: ${VITE_API_URL}
-    env_file:
-      - ./frontend/.env.prod.public
+        VITE_API_URL: http://143.110.155.41
     depends_on:
       - backend
     networks:
