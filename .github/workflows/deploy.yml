@@ -1,0 +1,36 @@
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+      
+      - name: Copy project to server
+        run: |
+          ssh -o StrictHostKeyChecking=no mdah@buld.site "mkdir -p ~/aiqa-4"
+          rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" . mdah@buld.site:~/aiqa-4
+      
+      - name: Update Nginx config and reload
+        run: |
+          ssh -o StrictHostKeyChecking=no mdah@buld.site <<EOF
+            sudo cp ~/aiqa-4/nginx/default.conf /etc/nginx/conf.d/default.conf
+            sudo nginx -t && sudo systemctl reload nginx
+          EOF
+
+      - name: Deploy
+        run: |
+          ssh -o StrictHostKeyChecking=no mdah@buld.site <<EOF
+            cd ~/aiqa-4
+            docker compose pull
+            docker compose up -d --build
+          EOF
